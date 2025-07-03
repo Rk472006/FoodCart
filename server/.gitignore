@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node modules (Client + Server)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Runtime + Build
+dist/
+dist-ssr/
+build/
+client/dist/
+server/dist/
+*.local
+
+# Environment variables
+.env
+.env.local
+client/.env
+server/.env
+
+# Firebase key (keep secret)
+serviceAccountkey.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor specific files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Mac/Linux trash
+.Trashes

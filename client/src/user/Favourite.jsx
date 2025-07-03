@@ -1,0 +1,72 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import FoodProduct from '../components/FoodProduct';
+import Navbar from '../components/Navbar';
+import './Favourite.css';
+
+export default function Favourite() {
+  const { uid } = useParams();
+  const [favourites, setFavourites] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let intervalId;
+
+    const fetchFavourites = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/favourites/${uid}`);
+        setFavourites(res.data.products || []);
+      } catch (err) {
+        console.error("Error fetching favourites", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    
+    fetchFavourites();
+
+    
+    intervalId = setInterval(fetchFavourites, 50);
+
+
+    return () => clearInterval(intervalId);
+  }, [uid]);
+
+  const removeFromFavourites = async (productId) => {
+    try {
+      await axios.post(`http://localhost:5000/api/favourites/${uid}/remove`, {
+        productId,
+      });
+      
+    } catch (err) {
+      console.error("Error removing from favourites", err);
+    }
+  };
+
+  return (
+    <div>
+      <Navbar uid={uid} />
+      <div className="favourite-page">
+        <h2>Your Favourites</h2>
+        {loading ? (
+          <p className="loading-text">Loading your favourites...</p>
+        ) : favourites.length > 0 ? (
+          <div className="favourites-grid">
+            {favourites.map((product) => (
+              <FoodProduct
+                key={product._id}
+                product={product}
+                uid={uid}
+                onRemoveFavorite={removeFromFavourites}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="no-favourites">No favourites found.</p>
+        )}
+      </div>
+    </div>
+  );
+}

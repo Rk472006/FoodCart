@@ -1,0 +1,54 @@
+/* Home.css */
+.home-page{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+}
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid whitesmoke;
+  width:400px;
+  height: 250px;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
+  text-shadow: 1px 1px #fff;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.login-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.register-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}

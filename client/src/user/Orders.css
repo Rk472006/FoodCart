@@ -1,0 +1,89 @@
+
+
+/* Optional inner wrapper for heading and list */
+.orders-page {
+  
+  background: #f7f9fc;
+  max-width: 1000px;
+  margin: 0rem 15rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.orders-page h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* List container */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Each horizontal order card */
+.horizontal-order-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.horizontal-order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Left part (ID + Date) */
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Right part (Status + Total + Button) */
+.order-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 0.4rem;
+}
+
+/* View Summary Button */
+.order-meta button {
+  margin-top: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.order-meta button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive tweak for mobile */
+@media (max-width: 600px) {
+  .horizontal-order-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-meta {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+}

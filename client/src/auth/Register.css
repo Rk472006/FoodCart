@@ -1,0 +1,72 @@
+/* Register.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.register-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#register {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+#register input {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+#register input:focus {
+  outline: none;
+  border-color: #ff5e7e;
+}
+
+#register button {
+  padding: 0.75rem;
+  background-color: #ff5e7e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#register button:hover {
+  background-color: #e14c6c;
+}
+
+#register p {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+#register a {
+  color: #ff5e7e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#register a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,91 @@
+.menu-page {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.menu-page h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Filter Controls */
+.menu-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.menu-controls select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.menu-controls select:focus {
+  border-color: #007bff;
+}
+
+/* Product Grid */
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Responsive Design - Media Queries */
+
+/* For tablets and below (≤ 768px) */
+@media (max-width: 768px) {
+  .menu-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .menu-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .menu-controls select {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .menu-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* For mobile phones (≤ 480px) */
+@media (max-width: 480px) {
+  .menu-page {
+    padding: 1rem;
+  }
+
+  .menu-page h2 {
+    font-size: 1.6rem;
+  }
+
+  .menu-controls select {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .menu-grid {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+}

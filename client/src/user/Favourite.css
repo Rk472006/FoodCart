@@ -1,0 +1,28 @@
+.favourite-page {
+  padding: 20px;
+  text-align: center;
+  color:black;
+  background-color: white;
+  min-height: 100vh;
+}
+
+.favourite-page h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.favourites-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.loading-text,
+.no-favourites {
+  font-size: 18px;
+  color: black;
+  margin-top: 40px;
+}

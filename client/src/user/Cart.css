@@ -1,0 +1,247 @@
+
+
+.cart-container {
+  display :flex;
+  flex-direction: column;
+  
+  width: 75%;
+  margin: 2rem 10rem ; 
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cart-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2b2b2b;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.cart-item img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.cart-details {
+  flex-grow: 1;
+}
+
+.cart-details h3 {
+  margin: 0 0 0.3rem;
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.cart-details p {
+  margin: 0.2rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.cart-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cart-actions button {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.cart-actions button:nth-child(1) {
+  background-color: #28a745; /* green */
+}
+
+.cart-actions button:nth-child(1):hover {
+  background-color: #218838;
+}
+
+.cart-actions button:nth-child(2) {
+  background-color: #ffc107; /* yellow */
+  color: #212529;
+}
+
+.cart-actions button:nth-child(2):hover {
+  background-color: #e0a800;
+}
+
+.cart-actions button:nth-child(3) {
+  background-color: #dc3545; /* red */
+}
+
+.cart-actions button:nth-child(3):hover {
+  background-color: #c82333;
+}
+
+.cart-total {
+  text-align: right;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.clear-cart-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.6rem 1.2rem;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.place-order-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.6rem 1.2rem;
+  background-color: black;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.place-order-button:hover{
+    background-color: rgba(0, 0, 0, 0.641);
+}
+
+.clear-cart-button:hover {
+  background-color: #cc0000;
+}
+
+.empty-cart-message {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 1.4rem;
+  color: #999;
+}
+.cart-actions-container{
+    display :flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* === RESPONSIVE MEDIA QUERIES === */
+
+@media (max-width: 768px) {
+  .cart-container {
+    margin: 5.5rem 1rem 2rem;
+    padding: 1rem;
+  }
+
+  .cart-title {
+    font-size: 1.6rem;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .cart-item img {
+    width: 80px;
+  }
+
+  .cart-details h3 {
+    font-size: 1.1rem;
+  }
+
+  .cart-details p {
+    font-size: 0.95rem;
+  }
+
+  .cart-actions {
+    flex-direction: row;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cart-actions button {
+    flex: 1 1 30%;
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+
+  .cart-total {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  .clear-cart-button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    width: 100%;
+  }
+   .place-order-button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    width: 100%;
+  }
+  .cart-actions-container{
+    flex-direction: column;
+    
+  }
+  .empty-cart-message {
+    font-size: 1.2rem;
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-container {
+    margin-top: 5rem;
+  }
+
+  .cart-title {
+    font-size: 1.4rem;
+  }
+
+  .cart-item img {
+    width: 70px;
+  }
+
+  .cart-actions button {
+    flex: 1 1 100%;
+  }
+  .cart-actions-container{
+    flex-direction: column;
+  }
+  .place-order-button {
+    margin-top: 1rem;
+  }
+  .clear-cart-button {
+    margin-top: 1rem;
+  }
+}

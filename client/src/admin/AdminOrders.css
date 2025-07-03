@@ -1,0 +1,67 @@
+.admin-orders-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.admin-orders-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 2rem;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.orders-table th {
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
+}
+
+.orders-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.status-select {
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-weight: 500;
+}
+
+.view-btn {
+  padding: 0.5rem 1rem;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+  background-color: #138496;
+}
