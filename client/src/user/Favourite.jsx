@@ -33,10 +33,10 @@ export default function Favourite() {
         `${import.meta.env.VITE_EXPRESS_API}/api/favourites/${uid}/remove`,
         { productId }
       );
-      // update UI immediately
       setFavourites((prev) =>
         prev.filter((product) => product._id !== productId)
       );
+      fetchFavourites();
     } catch (err) {
       console.error("Error removing from favourites", err);
     }
