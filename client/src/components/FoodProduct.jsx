@@ -14,7 +14,7 @@ export default function FoodProduct({ product, uid }) {
 
   const addToCart = async () => {
     try {
-      await axios.post("http://localhost:5000/api/cart/add", {
+      await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/cart/add`, {
         uid,
         productId: product._id,
       });
@@ -27,7 +27,7 @@ export default function FoodProduct({ product, uid }) {
 
   const removeFromCart = async () => {
   try {
-    await axios.post("http://localhost:5000/api/cart/delete", {
+    await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/cart/delete`, {
       uid,
       productId: product._id,
     });
@@ -42,13 +42,13 @@ export default function FoodProduct({ product, uid }) {
   const toggleFavorite = async () => {
     try {
       if (!isFavorite) {
-        await axios.post(`http://localhost:5000/api/favourites/${uid}/add`, {
+        await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/favourites/${uid}/add`, {
           productId: product._id,
         });
         setIsFavorite(true);
         console.log("Added to favorites");
       } else {
-        await axios.post(`http://localhost:5000/api/favourites/${uid}/remove`, {
+        await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/favourites/${uid}/remove`, {
           productId: product._id,
         });
         setIsFavorite(false);
@@ -61,7 +61,7 @@ export default function FoodProduct({ product, uid }) {
 
   const checkIfFavorite = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/favourites/${uid}`);
+      const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/favourites/${uid}`);
       const isFav = res.data.products.some((p) => p._id === product._id);
       setIsFavorite(isFav);
     } catch (err) {
@@ -71,7 +71,7 @@ export default function FoodProduct({ product, uid }) {
 
   const checkIfInCart = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/cart/${uid}`);
+      const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/cart/${uid}`);
       const isPresent = res.data.items.some(
         (item) => item.productId._id === product._id
       );

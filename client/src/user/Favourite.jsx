@@ -15,7 +15,7 @@ export default function Favourite() {
 
     const fetchFavourites = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/favourites/${uid}`);
+        const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/favourites/${uid}`);
         setFavourites(res.data.products || []);
       } catch (err) {
         console.error("Error fetching favourites", err);
@@ -36,7 +36,7 @@ export default function Favourite() {
 
   const removeFromFavourites = async (productId) => {
     try {
-      await axios.post(`http://localhost:5000/api/favourites/${uid}/remove`, {
+      await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/favourites/${uid}/remove`, {
         productId,
       });
       

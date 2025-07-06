@@ -17,7 +17,7 @@ export default function EditProductPage() {
       const user = auth.currentUser;
       if (!user) return;
       const token = await user.getIdToken();
-      const res = await axios.get(`http://localhost:5000/api/admin/products/${id}`, {
+      const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/admin/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setForm(res.data.product);
@@ -44,7 +44,7 @@ export default function EditProductPage() {
   const user = auth.currentUser;
   const token = await user.getIdToken();
 
-  const res = await axios.post("http://localhost:5000/api/upload", data, {
+  const res = await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/upload`, data, {
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
@@ -69,7 +69,7 @@ export default function EditProductPage() {
 
       const updatedForm = { ...form, imageUrl };
 
-      await axios.put(`http://localhost:5000/api/admin/products/${id}`, updatedForm, {
+      await axios.put(`${import.meta.env.VITE_EXPRESS_API}/api/admin/products/${id}`, updatedForm, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/admin/menu");

@@ -11,7 +11,7 @@ export default function Cart() {
   const Navigate = useNavigate();
   const fetchCart = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/cart/${uid}`);
+      const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/cart/${uid}`);
       setCart(res.data);
     } catch (err) {
       console.error("Error fetching cart", err);
@@ -23,9 +23,9 @@ export default function Cart() {
   const updateCart = async (productId, action) => {
     try {
       const endpoints = {
-        add: "http://localhost:5000/api/cart/add",
-        remove: "http://localhost:5000/api/cart/remove",
-        delete: "http://localhost:5000/api/cart/delete",
+        add: `${import.meta.env.VITE_EXPRESS_API}/api/cart/add`,
+        remove: `${import.meta.env.VITE_EXPRESS_API}/api/cart/remove`,
+        delete: `${import.meta.env.VITE_EXPRESS_API}/api/cart/delete`,
       };
 
       await axios.post(endpoints[action], { uid, productId });
@@ -37,7 +37,7 @@ export default function Cart() {
 
   const clearCart = async () => {
     try {
-      await axios.post("http://localhost:5000/api/cart/clear", { uid });
+      await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/cart/clear`, { uid });
       fetchCart();
     } catch (err) {
       console.error("Error clearing cart", err);

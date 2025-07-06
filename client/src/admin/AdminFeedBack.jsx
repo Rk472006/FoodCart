@@ -10,7 +10,7 @@ export default function AdminFeedBack() {
   useEffect(() => {
     const fetchFeedbacks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/feedback/all");
+        const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/feedback/all`);
         if (res.data.success) {
           setFeedbacks(res.data.feedbacks);
           console.log("Fetched feedbacks ratings:", res.data.feedbacks);

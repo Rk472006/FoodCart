@@ -12,7 +12,7 @@ export default function AdminMenuPage() {
 
   const fetchProducts = async (token) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/products", {
+      const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/admin/products`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(res.data.products);
@@ -31,7 +31,7 @@ export default function AdminMenuPage() {
     const token = await user.getIdToken();
 
     try {
-      await axios.delete(`http://localhost:5000/api/admin/products/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_EXPRESS_API}/api/admin/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts((prev) => prev.filter((p) => p._id !== id));

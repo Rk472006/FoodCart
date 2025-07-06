@@ -29,7 +29,7 @@ export default function Search() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products");
+      const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/products`);
       setAllProducts(res.data);
       setFilteredProducts(res.data);
     } catch (err) {

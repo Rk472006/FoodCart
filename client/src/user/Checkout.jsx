@@ -21,7 +21,7 @@ export default function Checkout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/cart/${uid}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/cart/${uid}`).then((res) => {
       setCart(res.data);
     });
   }, [uid]);
@@ -44,7 +44,7 @@ export default function Checkout() {
   }
 
   try {
-    const res = await axios.post("http://localhost:5000/api/orders/place", {
+    const res = await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/orders/place`, {
       uid,
       deliveryDetails: form,
     });

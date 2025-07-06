@@ -23,7 +23,7 @@ const FeedbackPage = () => {
     }
 
     try {
-      await axios.post("/api/feedback", {
+      await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/feedback`, {
         userId,
         orderId,
         ratings,
@@ -40,7 +40,7 @@ const FeedbackPage = () => {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
-        const response = await axios.get(`/api/orders/${userId}/${orderId}`);
+        const response = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/orders/${userId}/${orderId}`);
         if (response.data.success) {
           setOrderDetails(response.data.order);
         } else {

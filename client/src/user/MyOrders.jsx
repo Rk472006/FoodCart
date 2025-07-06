@@ -17,7 +17,7 @@ const MyOrders = () => {
     const fetchOrdersAndFeedback = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/orders/${userUid}`
+          `${import.meta.env.VITE_EXPRESS_API}/api/orders/${userUid}`
         );
         if (res.data.success) {
           const sortedOrders = res.data.orders.sort(
@@ -30,7 +30,7 @@ const MyOrders = () => {
             sortedOrders.map(async (order) => {
               try {
                 const feedbackRes = await axios.get(
-                  `http://localhost:5000/api/feedback/check/${userUid}/${order._id}`
+                  `${import.meta.env.VITE_EXPRESS_API}/api/feedback/check/${userUid}/${order._id}`
                 );
                 feedbackMap[order._id] = feedbackRes.data.exists;
               } catch (err) {

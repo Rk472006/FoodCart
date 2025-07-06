@@ -26,7 +26,7 @@ export default function Menu() {
           params.order = order;
         }
 
-        const response = await axios.get("http://localhost:5000/api/menu", { params });
+        const response = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/menu`, { params });
         setMenuItems(response.data.products || []);
       } catch (error) {
         console.error("Error fetching menu items:", error);

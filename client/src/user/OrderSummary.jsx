@@ -16,7 +16,7 @@ const OrderSummary = () => {
 
     const fetchOrder = async () => {
       try {
-       const res = await axios.get(`http://localhost:5000/api/orders/${userUid}/${orderId}`);
+       const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/orders/${userUid}/${orderId}`);
         
         if (res.data.success) {
           setOrder(res.data.order);

@@ -12,7 +12,7 @@ export default function AdminOrdersPage() {
 
   const fetchOrders = async (token) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/orders", {
+      const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/admin/orders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -44,7 +44,7 @@ export default function AdminOrdersPage() {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/order/${userUid}/${orderId}`,
+        `${import.meta.env.VITE_EXPRESS_API}/api/admin/order/${userUid}/${orderId}`,
         { status: newStatus },
         {
           headers: {

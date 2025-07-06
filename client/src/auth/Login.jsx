@@ -39,7 +39,7 @@ export default function Login() {
         password
       );
       const firebaseUser = userCredential.user;
-      const response = await fetch(`http://localhost:5000/api/user/${firebaseUser.uid}`);
+      const response = await fetch(`${import.meta.env.VITE_EXPRESS_API}/api/user/${firebaseUser.uid}`);
       const userData = await response.json();
       toast.success("Logged in successfully!");
       localStorage.setItem("uid", firebaseUser.uid);

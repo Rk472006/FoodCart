@@ -38,7 +38,7 @@ export default function AddProductPage() {
   const user = auth.currentUser;
   const token = await user.getIdToken();
   console.log( "Entering image upload");
-  const res = await axios.post("http://localhost:5000/api/upload", data, {
+  const res = await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/upload`, data, {
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`, 
@@ -67,7 +67,7 @@ export default function AddProductPage() {
 
       const productData = { ...form, imageUrl };
 
-      await axios.post("http://localhost:5000/api/admin/products", productData, {
+      await axios.post(`${import.meta.env.VITE_EXPRESS_API}/api/admin/products`, productData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
