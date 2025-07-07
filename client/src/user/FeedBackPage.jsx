@@ -48,7 +48,7 @@ const FeedbackPage = () => {
       });
 
       toast.success("Feedback submitted successfully!");
-        navigate(`/myorders/${userId}`);
+        navigate(`/myorders`);
     } catch (err) {
       toast.error("Failed to submit feedback.");
     }
