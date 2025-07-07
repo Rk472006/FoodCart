@@ -13,6 +13,7 @@ const FeedbackPage = () => {
   const [ratings, setRatings] = useState({});
   const [feedbackText, setFeedbackText] = useState("");
   const [orderDetails, setOrderDetails] = useState({});
+  const [authLoading, setAuthLoading] = useState(true); 
     useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -25,6 +26,7 @@ const FeedbackPage = () => {
         setUid(null);
        
       }
+      setAuthLoading(false);
     });
 
     return () => unsubscribe();
@@ -56,7 +58,7 @@ const FeedbackPage = () => {
 
  
 useEffect(() => {
-  if (!userId || !orderId) return;          
+  if (authLoading||!userId || !orderId) return;          
 
   const fetchOrderDetails = async () => {
     try {
