@@ -18,7 +18,7 @@ export default function Favourite() {
         
         console.log(currentUid);
       } else {
-        toast.error("You must be logged in to view the Bin.");
+        
         setUid(null);
         
       }

@@ -28,7 +28,7 @@ export default function Checkout() {
        
         console.log(currentUid);
       } else {
-        toast.error("You must be logged in to view the Bin.");
+        
         setUid(null);
         
       }
