@@ -54,23 +54,26 @@ const FeedbackPage = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchOrderDetails = async () => {
-      try {
-        console.log(userId);
-        const response = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/orders/${userId}/${orderId}`);
-        if (response.data.success) {
-          setOrderDetails(response.data.order);
-        } else {
-          toast.error("Failed to fetch order details.");
-        }
-      } catch (error) {
-        console.error("Error fetching order details:", error);
-        toast.error("Error fetching order details.");
-      }
-    };
-    fetchOrderDetails();
-  });
+ 
+useEffect(() => {
+  if (!userId || !orderId) return;          
+
+  const fetchOrderDetails = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_EXPRESS_API}/api/orders/${userId}/${orderId}`
+      );
+      if (res.data.success) setOrderDetails(res.data.order);
+      else toast.error("Failed to fetch order details.");
+    } catch (err) {
+      console.error("Error fetching order details:", err);
+      toast.error("Error fetching order details.");
+    }
+  };
+
+  fetchOrderDetails();
+}, [userId, orderId]);                      
+
 
   return (
     <div className="feedback-page">
