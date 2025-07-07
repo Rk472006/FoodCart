@@ -21,6 +21,7 @@ import AdminOrderSummary from './admin/AdminOrderSummary';
 import ProtectedRoute from './auth/Protected'; 
 import FeedbackPage from './user/FeedBackPage'; 
 import AdminFeedBack from './admin/AdminFeedBack';
+import ProtectedAdminRoute from './auth/ProtectedAdmin';
 function App() {
   return (
     <Routes>
@@ -28,22 +29,22 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
-        <Route path="/dashboard/:uid" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/search/:uid" element={<ProtectedRoute><Search /></ProtectedRoute>} />
-        <Route path="/menu/:uid" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
-        <Route path="/favourites/:uid" element={<ProtectedRoute><Favourite /></ProtectedRoute>} />
-        <Route path="/cart/:uid" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
+        <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
+        <Route path="/favourites" element={<ProtectedRoute><Favourite /></ProtectedRoute>} />
+        <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
 
-      <Route path="/checkout/:uid" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
-      <Route path="/myorders/:uid"  element={<ProtectedRoute><MyOrders/></ProtectedRoute>} />
-      <Route path="/myorders/:uid/:orderId" element={<ProtectedRoute><OrderSummary/></ProtectedRoute>} />
-      <Route path="/admin/orders" element={<ProtectedRoute><AdminOrdersPage /></ProtectedRoute>} />
-      <Route path="/admin/menu" element={<ProtectedRoute><AdminMenu /></ProtectedRoute>} />
-      <Route path="/admin/add-product" element={<ProtectedRoute><AddProduct /></ProtectedRoute>} />
-      <Route path="/admin/order-summary/:userUid/:orderId" element={<ProtectedRoute><AdminOrderSummary /></ProtectedRoute>} />
-      <Route path="/admin/edit-product/:productId" element={<ProtectedRoute><EditProduct /></ProtectedRoute>} />
-      <Route path="/feedback/:uid/:orderId" element={<ProtectedRoute><FeedbackPage /></ProtectedRoute>} />
-      <Route path="/admin/feedback" element={<ProtectedRoute><AdminFeedBack /></ProtectedRoute>} />
+      <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+      <Route path="/myorders"  element={<ProtectedRoute><MyOrders/></ProtectedRoute>} />
+      <Route path="/myorders/:orderId" element={<ProtectedRoute><OrderSummary/></ProtectedRoute>} />
+      <Route path="/admin/orders" element={<ProtectedAdminRoute><AdminOrdersPage /></ProtectedAdminRoute>} />
+      <Route path="/admin/menu" element={<ProtectedAdminRoute><AdminMenu /></ProtectedAdminRoute>} />
+      <Route path="/admin/add-product" element={<ProtectedAdminRoute><AddProduct /></ProtectedAdminRoute>} />
+      <Route path="/admin/order-summary/:userUid/:orderId" element={<ProtectedAdminRoute><AdminOrderSummary /></ProtectedAdminRoute>} />
+      <Route path="/admin/edit-product/:productId" element={<ProtectedAdminRoute><EditProduct /></ProtectedAdminRoute>} />
+      <Route path="/feedback/:orderId" element={<ProtectedRoute><FeedbackPage /></ProtectedRoute>} />
+      <Route path="/admin/feedback" element={<ProtectedAdminRoute><AdminFeedBack /></ProtectedAdminRoute>} />
     </Routes>
   );
 }

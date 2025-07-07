@@ -3,14 +3,30 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import './OrderSummary.css';
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
 const OrderSummary = () => {
-  const { uid:userUid, orderId:orderId } = useParams();
+  const {  orderId:orderId } = useParams();
   const navigate = useNavigate();
-
+  const [userUid, setUid] = useState(null);
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+        
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+        
+      }
+    });
 
+    return () => unsubscribe();
+  }, []);
   useEffect(() => {
     if (!userUid || !orderId) return;
 
@@ -73,7 +89,7 @@ const OrderSummary = () => {
           <h3>Total: ₹{order.totalAmount}</h3>
         </div>
 
-        <button onClick={() => navigate(`/myorders/${userUid}`)} className="back-btn">← Back to Orders</button>
+        <button onClick={() => navigate(`/myorders`)} className="back-btn">← Back to Orders</button>
       </div>
       </div>
     </div>

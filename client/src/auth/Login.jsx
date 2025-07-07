@@ -42,11 +42,11 @@ export default function Login() {
       const response = await fetch(`${import.meta.env.VITE_EXPRESS_API}/api/user/${firebaseUser.uid}`);
       const userData = await response.json();
       toast.success("Logged in successfully!");
-      localStorage.setItem("uid", firebaseUser.uid);
+      console.log(userData.isAdmin);
       if (userData.isAdmin) {
         navigate(`/admin/orders`, { replace: true });
       } else {
-        navigate(`/search/${firebaseUser.uid}`,{replace:true});
+        navigate(`/search`,{replace:true});
       }
     } catch (err) {
       console.error("Login failed:", err);

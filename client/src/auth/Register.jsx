@@ -39,8 +39,8 @@ export default function Register() {
       });
 
       toast.success("Registered successfully!");
-      localStorage.setItem("uid", firebaseUser.uid);
-      navigate(`/search/${firebaseUser.uid}`, { replace: true });
+      
+      navigate(`/search`, { replace: true });
     } catch (err) {
       console.error("Register failed:", err);
       toast.error("Registration failed.");

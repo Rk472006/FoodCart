@@ -3,14 +3,30 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./Orders.css";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
 const MyOrders = () => {
-  const { uid: userUid } = useParams();
+  const [userUid, setUid] = useState(null);
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [feedbackGiven, setFeedbackGiven] = useState({});
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+       
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+       
+      }
+    });
 
+    return () => unsubscribe();
+  }, []);
   useEffect(() => {
     if (!userUid) return;
 
@@ -89,7 +105,7 @@ const MyOrders = () => {
                       <button
                         className="feedback-button"
                         onClick={() =>
-                          navigate(`/feedback/${userUid}/${order._id}`)
+                          navigate(`/feedback/${order._id}`)
                         }
                       >
                         Give Feedback
@@ -104,7 +120,7 @@ const MyOrders = () => {
                   <button
                     className="summary-button"
                     onClick={() =>
-                      navigate(`/myorders/${userUid}/${order._id}`)
+                      navigate(`/myorders/${order._id}`)
                     }
                   >
                     View Summary

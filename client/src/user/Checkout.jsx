@@ -3,9 +3,10 @@ import "./Checkout.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
 export default function Checkout() {
-  const { uid } = useParams();
+  const [uid, setUid] = useState(null);
   const [cart, setCart] = useState(null);
   const [form, setForm] = useState({
     name: "",
@@ -19,7 +20,22 @@ export default function Checkout() {
   });
 
   const navigate = useNavigate();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+       
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+        
+      }
+    });
 
+    return () => unsubscribe();
+  }, []);
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/cart/${uid}`).then((res) => {
       setCart(res.data);

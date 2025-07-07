@@ -3,12 +3,30 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { useParams,useNavigate } from "react-router-dom";
 import "./Cart.css";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
 export default function Cart() {
-  const { uid } = useParams();
+  const [uid, setUid] = useState(null);
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const Navigate = useNavigate();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+        
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+      
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const fetchCart = async () => {
     try {
       const res = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/cart/${uid}`);
@@ -110,7 +128,7 @@ export default function Cart() {
 
       <h3 className="cart-total">Total: ${getTotal().toFixed(2)}</h3>
       <div className="cart-actions-container">
-      <button className="place-order-button" onClick={() => {Navigate(`/checkout/${uid}`)}}>Check out</button>
+      <button className="place-order-button" onClick={() => {Navigate(`/checkout`)}}>Check out</button>
       <button className="clear-cart-button" onClick={clearCart}>
         Clear Cart
       </button>

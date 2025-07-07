@@ -4,14 +4,31 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import Navbar from "../components/Navbar";
 import "./FeedbackPage.css";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
 const FeedbackPage = () => {
   const navigate = useNavigate();
-  const { uid: userId, orderId } = useParams();
+  const { orderId } = useParams();
+  const [userId, setUid] = useState(null);
   const [ratings, setRatings] = useState({});
   const [feedbackText, setFeedbackText] = useState("");
   const [orderDetails, setOrderDetails] = useState({});
+    useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+       
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+       
+      }
+    });
 
+    return () => unsubscribe();
+  }, []);
   const handleRating = (productId, rating) => {
     setRatings((prev) => ({ ...prev, [productId]: rating }));
   };
@@ -100,7 +117,7 @@ const FeedbackPage = () => {
         <button onClick={handleSubmit} className="submit-button">
           Submit Feedback
         </button>
-        <button onClick={() => navigate(`/myorders/${userId}`)}>
+        <button onClick={() => navigate(`/myorders`)}>
           Back to Orders
         </button>
       </div>

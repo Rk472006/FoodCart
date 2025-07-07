@@ -4,14 +4,33 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./Search.css";
 import FoodProduct from "../components/FoodProduct";
 import axios from "axios";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Search() {
-  const { uid } = useParams();
+  const [uid, setUid] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const navigate = useNavigate();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+        
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+        
+      }
+    });
 
+    return () => unsubscribe();
+  }, []);
   useEffect(() => {
     fetchProducts();
   }, []);

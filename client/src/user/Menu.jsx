@@ -4,13 +4,29 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import FoodProduct from '../components/FoodProduct';
 import './Menu.css';
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
 export default function Menu() {
-  const { uid } = useParams();
+  const [uid, setUid] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [sortOption, setSortOption] = useState("");
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+       
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+        
+      }
+    });
 
+    return () => unsubscribe();
+  }, []);
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {

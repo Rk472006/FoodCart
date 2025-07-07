@@ -4,12 +4,28 @@ import axios from "axios";
 import FoodProduct from "../components/FoodProduct";
 import Navbar from "../components/Navbar";
 import "./Favourite.css";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/firebase";
 export default function Favourite() {
-  const { uid } = useParams();
+   const [uid, setUid] = useState(null);
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const currentUid = user.uid;
+        setUid(currentUid);
+        
+        console.log(currentUid);
+      } else {
+        toast.error("You must be logged in to view the Bin.");
+        setUid(null);
+        
+      }
+    });
 
+    return () => unsubscribe();
+  }, []);
   useEffect(() => {
     const fetchFavourites = async () => {
       try {
