@@ -57,6 +57,7 @@ const FeedbackPage = () => {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
+        console.log(userId);
         const response = await axios.get(`${import.meta.env.VITE_EXPRESS_API}/api/orders/${userId}/${orderId}`);
         if (response.data.success) {
           setOrderDetails(response.data.order);
