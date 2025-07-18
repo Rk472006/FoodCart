@@ -68,7 +68,7 @@
   background-color: #218838;
 }
 
-/* Responsive */
+
 @media screen and (max-width: 768px) {
   .checkout-container {
     flex-direction: column;

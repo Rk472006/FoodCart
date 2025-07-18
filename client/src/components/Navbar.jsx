@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "../auth/firebase";   // adjust the path if needed
+import { auth } from "../auth/firebase";   
 import "./Navbar.css";
 
 export default function Navbar({ uid }) {

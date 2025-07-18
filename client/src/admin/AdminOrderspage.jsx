@@ -3,7 +3,7 @@ import AdminNavbar from "./AdminNavbar";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./AdminOrders.css"; // 👈 Import the CSS
+import "./AdminOrders.css"; 
 
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState([]);

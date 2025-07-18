@@ -3,16 +3,16 @@ const Cart = require("../models/Cart");
 const Product = require("../models/Product");
 const router = express.Router();
 
-// 📦 GET user's cart with populated product info
+
 router.get("/:uid", async (req, res) => {
   try {
     const { uid } = req.params;
     const cart = await Cart.findOne({ userUid: uid }).populate("items.productId");
 
     if (cart) {
-      // Filter out items with missing (deleted) product references
+      
       cart.items = cart.items.filter(item => item.productId !== null);
-      await cart.save(); // Optional: persist the cleaned cart
+      await cart.save(); 
     }
 
     res.json(cart || { userUid: uid, items: [] });
@@ -22,12 +22,12 @@ router.get("/:uid", async (req, res) => {
   }
 });
 
-// ➕ Add a product to cart (increment if exists)
+
 router.post("/add", async (req, res) => {
   const { uid, productId } = req.body;
 
   try {
-    // Validate product exists before adding
+    
     const product = await Product.findById(productId);
     if (!product) {
       return res.status(404).json({ error: "Product does not exist" });
@@ -61,7 +61,7 @@ router.post("/add", async (req, res) => {
   }
 });
 
-// ➖ Remove a product (decrement quantity or remove if 1)
+
 router.post("/remove", async (req, res) => {
   const { uid, productId } = req.body;
 
@@ -91,7 +91,7 @@ router.post("/remove", async (req, res) => {
   }
 });
 
-// ❌ Delete product completely (no matter the quantity)
+
 router.post("/delete", async (req, res) => {
   const { uid, productId } = req.body;
 
@@ -118,7 +118,7 @@ router.post("/delete", async (req, res) => {
   }
 });
 
-// 🧹 Clear entire cart
+
 router.post("/clear", async (req, res) => {
   const { uid } = req.body;
 

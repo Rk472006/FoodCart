@@ -50,28 +50,28 @@ router.post("/", async (req, res) => {
 
 router.get("/all", async (req, res) => {
   try {
-    // Fetch all feedbacks sorted by most recent
+    
     const feedbacks = await Feedback.find().sort({ createdAt: -1 });
 
-    // Fetch users and only non-deleted products
+    
     const users = await User.find();
     const products = await Product.find();
 
-    // Create lookup maps
+    
     const userMap = {};
     const productMap = {};
 
-    // Map uid -> email
+    
     users.forEach((user) => {
       userMap[user.uid] = user.email || "Unknown User";
     });
 
-    // Map productId -> productName
+    
     products.forEach((product) => {
       productMap[product._id.toString()] = product.name || "Unnamed Product";
     });
 
-    // Transform feedbacks
+    
     const detailedFeedbacks = feedbacks.map((fb) => {
       const transformedRatings = Object.entries(fb.ratings || {})
         .filter(([key]) => !key.startsWith("__$")) 
@@ -90,7 +90,7 @@ router.get("/all", async (req, res) => {
 
       return {
         _id: fb._id,
-        userEmail: userMap[fb.userId] || "Unknown User", // userId must be Firebase UID
+        userEmail: userMap[fb.userId] || "Unknown User", 
         orderId: fb.orderId,
         feedbackText: fb.feedbackText,
         createdAt: fb.createdAt,

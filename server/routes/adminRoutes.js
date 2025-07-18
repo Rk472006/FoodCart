@@ -7,12 +7,9 @@ const Product = require("../models/Product");
 const UserOrder = require("../models/userOrder");
 const User = require("../models/user");
 
-// --- Product Routes ---
-
-// GET all products
 router.get("/products", verifyAdmin, async (req, res) => {
   try {
-    const products = await Product.find({ deleted: false }); // ✅ only active
+    const products = await Product.find({ deleted: false }); 
     res.json({ products });
   } catch (err) {
     console.error("Error fetching products:", err);
@@ -20,7 +17,7 @@ router.get("/products", verifyAdmin, async (req, res) => {
   }
 });
 
-// GET product by ID
+ 
 router.get("/products/:id", verifyAdmin, async (req, res) => {
   try {
     const { id } = req.params;
@@ -37,7 +34,7 @@ router.get("/products/:id", verifyAdmin, async (req, res) => {
   }
 });
 
-// POST add new product
+
 router.post("/products", verifyAdmin, async (req, res) => {
   try {
     const product = new Product(req.body);
@@ -49,7 +46,7 @@ router.post("/products", verifyAdmin, async (req, res) => {
   }
 });
 
-// PUT update product
+
 router.put("/products/:id", verifyAdmin, async (req, res) => {
   try {
     const { id } = req.params;
@@ -66,7 +63,7 @@ router.put("/products/:id", verifyAdmin, async (req, res) => {
   }
 });
 
-// DELETE product
+
 router.delete("/products/:id", verifyAdmin, async (req, res) => {
   try {
     const { id } = req.params;
@@ -86,7 +83,7 @@ router.delete("/products/:id", verifyAdmin, async (req, res) => {
 
 
 
-// GET all orders
+
 router.get("/orders", verifyAdmin, async (req, res) => {
   try {
     const allOrders = await UserOrder.find();
@@ -115,7 +112,7 @@ router.get("/orders", verifyAdmin, async (req, res) => {
   }
 });
 
-// PUT update order status
+
 router.put("/order/:uid/:orderId", verifyAdmin, async (req, res) => {
   try {
     const { orderId } = req.params;

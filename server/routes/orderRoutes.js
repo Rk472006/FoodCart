@@ -100,8 +100,7 @@ router.get("/:uid/:orderId", async (req, res) => {
     console.log("✅ Looking for order:", orderId);
     console.log("📦 Orders available:", userOrder.orders.map(o => o._id.toString()));
 
-    const order = userOrder.orders.id(orderId); // ✅ Recommended way
-
+    const order = userOrder.orders.id(orderId); 
     if (!order) {
       console.log("❌ Order not found:", orderId);
       return res.status(404).json({ success: false, message: "Order not found" });

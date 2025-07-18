@@ -40,7 +40,7 @@ export default function Favourite() {
       }
     };
 
-    fetchFavourites(); // 🔄 Only once on mount
+    fetchFavourites(); 
   }, [uid]);
 
   const removeFromFavourites = async (productId) => {

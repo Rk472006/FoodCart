@@ -78,7 +78,6 @@ export default function Checkout() {
         state: "",
         country: "India",
       });
-      /* navigate(`/orders/${uid}`); */
     } else {
       alert("Failed to place order. Please try again.");
     }

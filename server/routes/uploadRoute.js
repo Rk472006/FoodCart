@@ -1,6 +1,6 @@
 const express = require("express");
-const upload = require("../middleware/upload"); // multer + cloudinary
-const verifyAdmin = require("../middleware/verifyAdmin"); // middleware that checks Firebase token and admin role
+const upload = require("../middleware/upload"); 
+const verifyAdmin = require("../middleware/verifyAdmin"); 
 
 const router = express.Router();
 

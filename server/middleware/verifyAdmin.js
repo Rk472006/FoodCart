@@ -1,4 +1,4 @@
-// middlewares/verifyAdmin.js
+
 const admin = require("../utils/firebase");
 const User = require("../models/user");
 
@@ -12,11 +12,11 @@ const verifyAdmin = async (req, res, next) => {
 
     const idToken = authHeader.split(" ")[1];
 
-    // ✅ Firebase token verification
+    
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     const uid = decodedToken.uid;
 
-    // ✅ Check if user is admin in MongoDB
+
     const user = await User.findOne({ uid });
     if (!user || !user.isAdmin) {
       return res.status(403).json({ error: "Access denied: Not an admin" });
@@ -24,7 +24,7 @@ const verifyAdmin = async (req, res, next) => {
 
     console.log("✅ Admin verified:", user.email);
     req.user = user;
-    return next(); // ✅ Only continue if all checks pass
+    return next(); 
 
   } catch (error) {
     console.error("❌ verifyAdmin error:", error.message);

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import AdminNavbar from "./AdminNavbar";
-import "./EditProduct.css"; // 👈 Import the CSS
+import "./EditProduct.css"; 
 
 export default function EditProductPage() {
   const { productId: id } = useParams();

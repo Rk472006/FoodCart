@@ -1,4 +1,4 @@
-/* Navbar container */
+
 .navbar {
   background-color: #333;
   color: white;
@@ -8,13 +8,14 @@
   z-index: 1000;
 }
 
-/* Flex container for brand and hamburger */
+
 .nav-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;/* Navbar container */
+  align-items: center;
+}
 .navbar {
-  background-color: #1f2937; /* Dark slate */
+  background-color: #1f2937; 
   color: white;
   padding: 12px 24px;
   position: sticky;
@@ -26,7 +27,7 @@
   flex-wrap: wrap;
 }
 
-/* Brand */
+
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
@@ -34,48 +35,20 @@
   transform: skewX(-5deg);
 }
 
-/* Hamburger icon */
-.hamburger {
-  font-size: 28px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: none;
-}
 
-/* Navbar menu container */
-.navbar-menu {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
 
-.navbar-menu button {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
-}
 
 .navbar-menu button:hover {
-  background-color: #374151; /* hover slate */
+  background-color: #374151; 
 }
 
-/* Active route style */
 .navbar-menu .active {
   background-color: #fcd34d;
   color: #1f2937;
   font-weight: bold;
 }
 
-/* ----------------------------- */
-/* Responsive styles (Mobile) */
-/* ----------------------------- */
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -97,15 +70,14 @@
   }
 }
 
-}
 
-/* Brand styling */
+
 .navbar-brand h2 {
   margin: 0;
   font-size: 24px;
 }
 
-/* Hamburger menu icon */
+
 .hamburger {
   display: none;
   font-size: 28px;
@@ -113,7 +85,7 @@
   user-select: none;
 }
 
-/* Navbar links (desktop) */
+
 .navbar-links {
   display: flex;
   gap: 20px;
@@ -130,7 +102,7 @@
   color: #f39c12;
 }
 
-/* Logout button */
+
 .logout-btn {
   background: #e74c3c;
   color: white;
@@ -145,15 +117,13 @@
   background: #c0392b;
 }
 
-/* ----------------------------- */
-/* Responsive styles (Mobile) */
-/* ----------------------------- */
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
   }
 
-  /* Stack the navbar links vertically */
+  
   .navbar-links {
     display: none;
     flex-direction: column;
@@ -169,7 +139,7 @@
     display: flex;
   }
 
-  /* Adjust container layout */
+  
   .nav-container {
     flex-direction: column;
     align-items: stretch;
